@@ -1,7 +1,7 @@
 #include<stdio.h>
 int main(){
 	
-	int i,j,n=5,a=0;
+	int i,j,n=6,a=0;
 	for(i=1;i<=2*n;i++){
 		if(i<=5){
 			
