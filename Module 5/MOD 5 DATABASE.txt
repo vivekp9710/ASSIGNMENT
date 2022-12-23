@@ -1,0 +1,58 @@
+Q-1 WHAT DO YOU UNDERSTAND BY DATABASE?
+A-1-Database is the collection of the data to access,manage,organise,electricaly from the file system known as the database.
+
+Q-2 WHAT IS NORMALIZATION?
+A-2-Normalization is the process of organising the data in the database. 
+    Normalization is the database design technique that reduces data redundancy and eleminates duplicate inconsistency of the
+    table from the elemenating column.
+
+Q-3 WHAT IS DIFFERENCE BETWEEN DBMS AND RDBMS?
+A-3 DBMS stands for database management system RDBMS stands for relational database management system.
+    IN DBMS data is stored as a file whereas in RDBMS data is stored in the form of the table.
+
+Q-4 WHAT is MF COD RULE OF RDBMS SYSTEMS?
+A-4 A Relational database management sysytem must manage its stored data using only its relational capabilities.
+    codd's 12 rules are set of thirteen rules(number 0 to 12) proposed by Edgar.f.codd,
+   a pioneer of the relational model for the database,designed to define what is required for database management 
+   system in order for it to be considered relational, i.e., a relational database management system(RDBMS).
+
+
+Q-5 WHAT DO YOU UNDERSTAND BY DATA REDUNDANCY?
+A-5 Data redundancy occurs when the same piece of data exists in mulptiple places.
+
+Q-6 WHAT IS DDL INTERPRETER?
+A-6 Data definition language interpreter is the process the ddl statement into a table containing meta data.
+
+Q-7 WHAT IS DML COMPILER IN SQL?
+A-7 IT process the DML statements into the low level instruction so they can be executed.
+
+Q-8 WHAT IS SQL KEY CONSTRAINTS WRITING AN EXAMPLE OF SQL KEY CONSTRAINTS
+A-8 SQL  constraints are used to specify rules for the data in a table.
+   constraints are used to limit the type of data that can go in a table
+   constraints can be column level or table level.column level constriants apply to a column and table level constraints apply to the whole table.
+
+   THE FOLLOWING KEY CONSTRAINTS ARE COMMONLY USED IN SQL 
+   1.NOT NULL:- Ensures that a column does not have a null value
+   2.UNIQUE :- Ensures that all values in a column are different
+   3.PRIMARY KEY:- Combination of NOT NULL and UNIQUE. Uniquely identifies each row in a table.
+   4.FOREIGN KEY:- Prevents action that would destroy links between tables
+   5.CHECK:-Ensures that the values in a column satisfies a specific condition
+   6.DEFAULT:- Set a default value for a column
+
+Q-9 WHAT IS SAVE POINT? HOW TO CREATE A SAVE POINT WRITE A QUERY?
+A-9 save point is a command in sql that is used with the rollback command.
+
+ We will save our initiated transaction using the SAVEPOINT command along with some specific names of this savepoint.
+
+   mysql> SAVEPOINT ini; 
+
+   Here, we have saved the initiated transaction with the name of 'ini'.
+
+  
+
+Q-10 WHAT IS TRIGGER AND HOW TO CREATE A TRIGGER IN SQL?
+A-10 Trigger is the special type of stored procedure that automatically runs when an event occurs in the database server.
+     Trigger is same as the procedure
+     
+    CREATE TRIGGER
+     create trigger[trigger_name]: creates or replaces an existing trigger with the trigger_name.

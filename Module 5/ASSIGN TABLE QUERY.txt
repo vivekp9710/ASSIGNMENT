@@ -1,0 +1,129 @@
+				ASSIGNMENT TABLES
+
+
+1.TABLE STUDENT AND EXAM
+
+	CREATE TABLE STUDENT(
+	ID INT PRIMARY KEY AUTO_INCREMENT,
+	NAME VARCHAR(50),
+	BRANCH VARCHAR(50),
+	);
+
+	CREATE TABLE EXAM(
+	ID INT PRIMARY KEY AUTO_INCREMENT,
+	S_CODE VARCHAR(50),
+	MARKS INT,
+	P_CODE VARCHAR(50),
+	);
+
+
+2.     CREATE TABLE FRIENDS
+
+ 	SELECT * FROM `friends`
+	
+	INSERT INTO `friends` (`firstname`, `lastname`, `address`, `city`, `age`) 
+	VALUES ('Cat', 'woman', '234 perfect street', 'hairball', '32'), ('Tweety', 'bird', '543', 'itotlaw');
+
+
+3.	CREATE TABLE EMPLOYEE AND INCENTIVE
+
+	CREATE TABLE Employee( 
+	id int PRIMARY KEY AUTO_INCREMENT,
+ 	FIRST_NAME varchar(50),
+	 LAST_NAME varchar(50),
+ 	salary int NOT NULL, 
+	joining_date timestamp, 
+	department varchar(50));
+
+		INSERT INTO `employee` (`id`, `FIRST_NAME`, `LAST_NAME`, `salary`, `joining_date`, `department`)
+ 		VALUES (NULL, 'john', 'abhram', '1000000', '2013-01-01 10:35:38', 'Banking'), (NULL, 'Michael ', 'clarke', '800000', '2013-01-01 10:35:38', 'Insurance'); 
+
+
+	CREATE TABLE INCENTIVE(
+   	id int primary key auto_increment,
+    	employee_ref_id int NOT NULL,
+    	incentive_date timestamp,
+    	incentive_amount int NOT NULL
+	);
+
+
+		INSERT INTO `incentive` (`id`, `employee_ref_id`, `incentive_date`, `incentive_amount`)
+ 		VALUES (NULL, '1', '2013-02-01 10:46:18', '5000'), (NULL, '2', '2013-02-01 10:46:18', '3000');
+
+
+Q-3 a) Get First_Name from employee table using Tom name “Employee Name”.
+A-3 a) SELECT * FROM 'EMPLOYEE' WHERE FIRST_NAME = 'TOM';
+ 
+-3 B)  SELECT FIRST_NAME,joining_date,salary FROM employee
+-3 c)  SELECT * FROM employee ORDER BY FIRST_NAME ASC
+       SELECT * FROM employee ORDER BY  salary DESC
+
+3 d)  SELECT * FROM employee WHERE FIRST_NAME LIKE 'j%'
+3 E)  SELECT department, MAX(salary) FROM employee GROUP BY department
+
+3 F)  SELECT FIRST_NAME,INCENTIVE_AMOUNT FROM employee A INNER JOIN incentive B ON A.id=B.employee_ref_id AND incentive_amount>3000
+
+3.g)  	CREATE TABLE Employee_log( 
+      	id int PRIMARY KEY AUTO_INCREMENT,
+     	 FIRST_NAME varchar(50),
+     	 LAST_NAME varchar(50),
+     	 salary int NOT NULL, 
+    	  joining_date timestamp, 
+   	   department varchar(50));
+
+      DELIMITER //
+      CREATE TRIGGER after_insert
+      AFTER INSERT ON employee
+      FOR EACH ROW
+      BEGIN
+
+          INSERT INTO employee_log(id,FIRST_NAME,LAST_NAME,salary,joining_date,department)
+          VALUES(new.id,new.FIRST_NAME,new.LAST_NAME,new.salary,new.joining_date,new.department);
+         END //   
+
+         VIEW TABLE
+      CREATE VIEW employee_detail AS SELECT id,FIRST_NAME,LAST_NAME,salary,joining_date,department FROM employee;     
+
+
+
+
+4.	CREATE TABLE SALESPEROSN AND CUSTOMER
+
+	CREATE TABLE SALESPERSON( id int PRIMARY KEY AUTO_INCREMENT,
+ 	SNO int,
+ 	SNAME varchar(50),
+ 	CITY varchar(50),
+ 	COMM float
+	 );
+
+	INSERT INTO `salesperson` (`id`, `SNO`, `SNAME`, `CITY`, `COMM`) 
+	VALUES (NULL, '1001', 'Peel', 'London', '0.12'), (NULL, '1002', 'Serres', 'San jose', '0.13');
+
+
+	CREATE TABLE CUSTOMER(
+    	id int PRIMARY KEY AUTO_INCREMENT,
+	CNM int NOT NULL,
+    	CNAME varchar(50),
+    	CITY varchar(50),
+   	 RATING int,
+    	SNO int
+        );
+
+	
+	ORDER TABLE
+
+	CREATE TABLE ORDER_table(
+   	 id int PRIMARY KEY AUTO_INCREMENT,
+    	ONO int NOT NULL,
+   	 Amt float NOT NULL,
+    	Odate timestamp,
+    	CNM int NOT NULL,
+    	SNO int NOT NULL
+   	 );
+
+4 a)	SELECT * FROM `order_table` WHERE amt > 1000
+4 b)	SELECT SNAME,CITY FROM salesperson WHERE COMM >0.12 AND CITY = 'LONDON';
+4 c)	SELECT SNAME, CITY FROM salesperson WHERE CITY IN ('BARCELONA','LONDON');
+4 d)	SELECT SNAME,COMM FROM salesperson WHERE COMM >0.10 AND COMM <0.12;
+4 e)	SELECT CNAME FROM customer WHERE RATING <=100 OR CITY='ROE';
+
