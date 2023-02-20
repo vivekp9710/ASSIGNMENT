@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            height: 150px;
+            width: 150px;
+            background-color: skyblue;
+            margin: 20px auto;
+            transition: 1s all ease;
+        }
+
+        .main {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            padding: 10px auto;
+            height: 500px;
+            width: 100%;
+        }
+
+        img {
+            height: 200px;
+            border-radius: 10%;
+            width: 200px;
+            border: 2px solid black;
+        }
+
+
+        .div1:hover {
+            transform: rotate(90deg);
+        }
+
+        .div2:hover {
+            transform: translate(50px, 80px);
+
+        }
+
+        .div3:hover {
+            transform: rotateX(180deg);
+        }
+
+        .div4:hover {
+            transform: rotateY(90deg);
+        }
+
+        .div5:hover {
+            transform: rotateY(203deg);
+        }
+
+        .div6:hover {
+            transform: scale(1.2);
+        }
+
+        .div7:hover {
+            transform: scaleX(2);
+
+        }
+
+        .div8:hover {
+            transform: scaleY(1.2);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="div1">
+            <img src="image/img11.jpg" alt="" />
+        </div>
+        <div class="div2">
+            <img src="image/img12.jpg" alt="" />
+        </div>
+        <div class="div3">
+            <img src="image/img13.jpg" alt="" />
+        </div>
+        <div class="div4">
+            <img src="image/img14.jpg" alt="" />
+        </div>
+        <div class="div5">
+            <img src="image/img15.jpg" alt="" />
+        </div>
+        <div class="div6">
+            <img src="image/img16.jpg" alt="" />
+        </div>
+        <div class="div7">
+            <img src="image/img17.jpg" alt="" />
+        </div>
+        <div class="div8">
+            <img src="image/img18.jpg" alt="" />
+        </div>
+    </div>
+</body>
+
+</html>

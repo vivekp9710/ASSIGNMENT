@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .list {
+            background-color: skyblue;
+            padding: 5px;
+        }
+
+        .list .nav {
+            display: flex;
+            gap: 30px;
+            color: blue;
+            margin-left: 20px;
+        }
+
+        .list .nav li {
+            padding: 20px;
+        }
+
+        .list .nav li a {
+            color: blue;
+        }
+
+        .serv-list {
+            position: relative;
+        }
+
+        .serv-list .inner-list {
+            display: none;
+            position: absolute;
+            top: 44px;
+            left: 0;
+            height: auto;
+            width: 100px;
+        }
+
+        .serv-list:hover .inner-list {
+            display: block;
+        }
+
+        .inner-list {
+            background-color: lightcyan;
+        }
+
+        .serv-list:hover span {
+            rotate: 180deg;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="list">
+        <ul class="nav">
+            <li><a href="">Home</a>
+            </li>
+            <li class="serv-list"><a href="">Service</a><span class="fa-solid fa-angle-down"></span>
+                <ul class="inner-list">
+                    <li><a href="">service1</a></li>
+                    <li><a href="">service2</a></li>
+
+                </ul>
+            </li>
+            <li><a href="">Blog</a></li>
+            <li><a href="">About As</a></li>
+            <li><a href="">Contact As</a></li>
+        </ul>
+    </div>
+</body>
+
+</html>
