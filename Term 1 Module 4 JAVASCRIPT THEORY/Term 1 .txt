@@ -1,0 +1,104 @@
+ 1.What is javascript?
+javascript is a scripting language also known as object based scripting language. javascript is also called typescript.
+
+2.what is the use fo isNaN function?
+The use of isNaN function is to used to determine whether an input value is number or not.
+It returns true if the value is a NaN else returns false.
+
+3.What is negative infinity?
+Negative infinity is a special numeric value that is returned when an arithmetic operation or mathematical function generates a negative value greater than largest number in javascript.
+
+4.Which company developed JavaScript?
+avaScript was invented by Brendan Eich in 1995.It was developed for Netscape 2, and became the ECMA-262 standard in 1997. After Netscape handed JavaScript over to ECMA, the Mozilla foundation continued to develop JavaScript for the Firefox browser.
+
+5.What are undeclared and undefined variables? 
+Undeclared: It occurs when we try to access any variable that is not initialized or declared earlier using the var or const keyword.
+Undefined: It occurs when a variable has been declared but has not been assigned any value. Undefined is not a keyword. 
+
+6.Write the code for adding new elements dynamically? 
+Javascript is a very important language when it comes to learning how the browser works. Often there are times we would like to add dynamic elements/content to our web pages. This post deals with all of that.
+
+Creation of new element: New elements can be created in JS by using the createElement() method.  
+
+Syntax:
+
+document.createElement("<tagName>");  
+// Where <tagName> can be any HTML 
+// tagName like div, ul, button, etc.
+
+// newDiv element has been created
+For Eg: let newDiv = document.createElement("div");
+
+
+7.What is the difference between ViewState and SessionState? 
+ViewState: It is maintained at only one level that is page-level. Changes made on a single page is not visible on other pages. Information that is gathered in view state is stored for the clients only and cannot be transferred to any other place. View state is synonymous with serializable data only.
+
+SessionState: It is maintained at session-level and data can be accessed across all pages in the web application. The information is stored within the server and can be accessed by any person that has access to the server where the information is stored.
+
+8.What is === operator? 
+The strict equality (===) operator checks whether its two operands are equal, returning a Boolean result. Unlike the equality operator, the strict equality operator always considers operands of different types to be different.
+
+9.How can the style/class of an element be changed?
+We can change, add or remove any CSS property from an HTML element on the occurrence of any event with the help of JavaScript. There are two approaches that allow us to achieve this task.
+
+Approach 1: Changing CSS with the help of the style property:
+Syntax:
+
+document.getElementById("id").style.property = new_style
+
+Approach 2: Changing the class itself – We can use two properties that can be used to manipulate the classes.
+. The classList Property: The classList is a read-only property that returns the CSS class names of an element as a DOMTokenList object. 
+
+Syntax:
+
+document.getElementById("id").classList
+
+You can use the below-mentioned methods to add classes, remove classes, and toggle between different classes respectively.
+
+The add() method: It adds one or more classes.
+The remove() method: It removes one or more classes.
+The toggle() method: If the class does not exist it adds it and returns true. It removes the class and returns false. The second boolean argument forces the class to be added or removed.
+
+10.How to read and write a file using JavaScript? 
+The fs.readFile() and rs.writeFile() methods are used to read and write of a file using javascript. The file is read using the fs.readFile() function, which is an inbuilt method.
+
+Syntax:
+fs.readFile( file_name, encoding, callback_function )
+
+The fs.writeFile() function is used to write data to a file in an asynchronous manner. If the file already exists, it will be replaced.
+
+Syntax:
+fs.writeFile( file_name, data, options, callback )
+
+11.What are all the looping structures in JavaScript? 
+loop is count number of iterations in javascript.
+There is 3 types of loops
+1.While loop
+2.Do while loop
+3.For loop
+
+12.How can you convert the string of any base to an integer in JavaScript? 
+In JavaScript parseInt() function (or a method) is used to convert the passed-in string parameter or value to an integer value itself. This function returns an integer of the base which is specified in the second argument of the parseInt() function.
+
+13.What is the function of the delete operator?
+The delete operator removes a property from an object. If the property's value is an object and there are no more references to the object, the object held by that property is eventually released automatically.
+
+Syntax:
+delete object.property
+
+14.What are all the types of Pop up boxes available in JavaScript?
+JavaScript has three kind of popup boxes: Alert box, Confirm box, and Prompt box.
+
+15.What is the use of Void (0)? 
+void(0) means return undefined as a primitive value. We use this to prevent any negative effects on a webpage when we insert some expression. For example, in the case of URL hyperlinks. Hyperlinks open by reloading the page when the user clicks on the link.
+
+16.How can a page be forced to load another page in JavaScript?
+ We can use window.location property inside the script tag to forcefully load another page in Javascript. It is a reference to a Location object that is it represents the current location of the document. We can change the URL of a window by accessing it.
+
+ 17.What are the disadvantages of using innerHTML in JavaScript? 
+    Disadvantages of innerHTML
+    1.Event handlers attached to any DOM element are preserved.
+    2.Replacement is done everywhere.
+    3.It is not possible to append innerHTML.
+    4.Breaks the document.
+    5.Used for Cross-site Scripting.
