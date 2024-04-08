@@ -1,0 +1,30 @@
+Q1. What is Node.js? Where can you use it?
+A1. Node js is an Open Source, cross-platform runtime environment for executing JavaScript code. 
+   Node is used extensively for server-side programming, making it possible for developers to use 
+   JavaScript for client-side and server-side code without needing to learn an additional language.
+
+Q2. Explain callback in Node.js
+A2. Node.js callbacks are a special type of function passed as an argument to another function.
+    They're called when the function that contains the callback as an argument completes its execution, and allows the code in the callback to run in the meantime.
+    Callbacks help us make asynchronous calls. Even Node.js APIs are written in a way that supports callbacks.
+
+Q3. What are the advantages of using promises instead of callbacks?
+A3. The advantage of using promises is that the syntax can be read easily with the help of then catch method.
+    Callback syntax is difficult to understand.
+   Erro can be easily managed using catch block whereas in callback error can not be easily manage.
+
+Q4. What is NPM?
+A4. NPM stands for Node Package Manager. 
+   Node package manager (npm) is a package manager and a software register but it's also a place where developers can find, 
+   build and manage code packages. Right now, npm contains over 800,000 packages for various applications, from front-end and robotics to mobile apps.
+
+Q5. What are the modules in Node.js? Explain
+A5. In Node.js, Modules are the blocks of encapsulated code that communicate with an external application on the basis of their related functionality.
+    Modules can be a single file or a collection of multiple files/folders. 
+    The reason programmers are heavily reliant on modules is because of their reusability as well as the ability to break down a complex piece of code into manageable chunks. 
+	
+    Modules are of 3 types
+   1.Core modules
+   2.Local modules
+   3.Third party modules
+

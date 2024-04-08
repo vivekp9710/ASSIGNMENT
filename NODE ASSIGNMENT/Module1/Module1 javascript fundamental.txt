@@ -1,0 +1,48 @@
+Q1 : What is the difference between Java & JavaScript?
+
+A1.Java is OOP or Object Oriented Programming language whereas Javascript is Object based scripting language.
+   Java requires a large amount of memory and in Javascript memory consumption is lesser than java.
+   Java should be compiled before execution and Javascript need to be integrated into the HTML program for execution.
+
+Q2. What is JavaScript?
+A2. Javascript is a scripting language well known for development of web pages
+    JavaScript can be used for Client-side developments as well as Server-side developments. JavaScript is both an imperative and declarative type of language. 
+   JavaScript contains a standard library of objects, like Array, Date, and Math, and a core set of language elements like operators, control structures, and statements. 
+
+Q3. What are the data types supported by JavaScript?
+A3. The Data types by javascript are as follows
+    1.String 2.Number 3.BigInt 4.Boolean 5.Undefined 6.Null 7.Object 8.Symbol.
+
+Q4. What are the scopes of a variable in JavaScript?
+A4. The scopes of variable in javascript are as 
+    1.var: The oldest way to declare variables. It has function scope and is hoisted.
+    2.let: Introduced in ECMAScript 6 (ES6). It has block scope and is also hoisted.
+    3.const: Also introduced in ES6. It is used to declare constants and has block scope. Unlike let, a const variable cannot be reassigned.
+
+
+Q5. What is Callback?
+A5. A callback function is a function passed into another function as an argument, 
+    which is then invoked inside the outer function to complete some kind of routine or action. 
+
+Q6. What is Closure? Give an example.
+A6. The function sayName() from this example is a closure. A closure is a function which has access to the variable from another function's scope.
+     This is accomplished by creating a function inside a function. Of course, the outer function does not have access to the inner scope.
+
+Q7. What is the difference between the operators ‘==‘ & ‘===‘?
+A7. The main difference between the two operators is how they compare values.
+    The == operator compares the values of two variables after performing type conversion if necessary.
+    On the other hand, the === operator compares the values of two variables without performing type conversion.
+
+Q8. What is the difference between null & undefined?
+A8. In JavaScript, null and undefined are two distinct types that represent different values. 
+    By definition, undefined means a variable has been declared but has not yet been assigned a value, 
+    whereas null is an assignment value, meaning that a variable has been declared and given the value of null.
+
+
+Q9.Q10. What is the difference between Call & Apply?
+A9. Call is a function that you use to change the value of this inside a function and execute it with the arguments provided.
+    Apply is very similar to the call function. The only difference is that in apply you can pass an array as an argument list.
+    
+
+
+   
