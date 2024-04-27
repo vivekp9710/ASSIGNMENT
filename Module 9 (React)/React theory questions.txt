@@ -1,16 +1,14 @@
 Quest 01:- What is React Js?
-Ans:- 	   React is a popular JavaScript library used for building user interfaces (UIs) and front-end
-	   applications. It was developed by Facebook and is maintained by both Facebook and a community of 
-	   individual developers and companies. React allows developers to create reusable UI components and 
-	   manage the dynamic updating of those components in response to changes in application state. 
-	  It uses a declarative approach to building UIs, where developers describe how the UI should look at 
-	  any given state, and React takes care of efficiently updating and rendering the UI.
+Ans:- 	   React is a framework that employs Webpack to automatically compile React, JSX, and ES6 code while handling CSS file prefixes.
+ 	   React is a JavaScript-based UI development library.
+           Although React is a library rather than a language, it is widely used in web development.
+           The library first appeared in May 2013 and is now one of the most commonly used frontend libraries for web development.
+           React offers various extensions for entire application architectural support, such as Flux and React Native, beyond mere UI.
 
 Quset 02:- What is NPM in React Js?
-Ans:-	   NPM (Node Package Manager) is a package manager for JavaScript and the default package manager for 
-	   Node.js. In the context of React.js, NPM is used to manage and install external libraries, packages,
-	   and dependencies that your React applications might need. It allows you to easily include and manage
- 	   third-party code within your projects.
+Ans:-	   NPM (Node Package Manager) is a package manager for JavaScript.
+          It is the default package manager that comes with NodeJS when you install it.
+           It consists of a command-line interface and an online database of public packages and private packages that are paid which is called the npm Registry.
 
 
 
@@ -24,18 +22,16 @@ Ans:- 	    Node.js is a server-side JavaScript runtime environment. In the conte
 
 
 Quest 04:- What is CLI command In React Js?
-Ans:- 	   CLI stands for Command Line Interface. In the context of React.js, the React CLI is a set of 
-	   command-line tools that help developers create, manage, and build React applications more efficiently. 
-	   One of the most commonly used React CLI tools is create-react-app, which sets up a new React project
-	   with a basic structure, development server, and build scripts.
+Ans:- 	   React has its own command-line interface (CLI) commands. However, 
+           these CLI commands are currently only used to create a passable version of a react application using the command line.
+           This will contain a default template as its design, so all the react application created this way will have great consistency as they all have same structure.
 
 
 
 Quest 05:- What is Components in React Js?
-Ans:-	   Components are the building blocks of React applications. They are reusable, isolated pieces of UI 
-	   that can be composed together to create complex user interfaces. React components can be thought of 
-           as self-contained units that have their own logic, state, and rendering behavior. Components can be 
-	   classified into two main types: functional components and class components.
+Ans:-	   Components in React serve as independent and reusable code blocks for UI elements.
+          They represent different parts of a web page and contain both structure and behavior. 
+           They are similar to JavaScript functions and make creating and managing complex user interfaces easier by breaking them down into smaller, reusable pieces.
 
 
 
