@@ -1,0 +1,57 @@
+1. What is MongoDb?.
+A1. MongoDB stores data in flexible, JSON-like documents, meaning fields can vary from document to document and data structure 
+    can be changed over time.
+    MongoDB is a distributed database at its core, so high availability, horizontal scaling, and geographic distribution
+    are built in and easy to use.
+
+2. What is the difference between MonogDb and SQL?.
+A2.  Data in MongoDB is represented as a collection of JSON documents, 
+    whereas data in SQL is represented as tables and rows.
+
+    The Join command, which permits querying across multiple tables, is a significant advantage of SQL.
+    On the other hand, MongoDB does not enable JOINS but instead supports multi-dimensional data types such as documents and arrays.
+
+    SQL allows for atomic transactions. You can have many operations within a transaction and roll back as if they were all one operation.
+    MongoDB does not handle transactions, and each operation is atomic.
+
+   We do not need to define the schema in MongoDB.
+   We may simply drop the docs in. In the case of SQL, we must first define the tables and columns.
+
+3. Create database for online shopping app.
+A3. Use Online Shopping App.
+
+4. Create Require collections for online shopping app and documents.
+A4. 
+
+    1.User 
+    db.createcollection("users")
+
+    2. Product Category
+    db.createcollection("productcategory")
+ 
+    3. Product
+    db.createcollection("products")
+
+    4. Order
+    db.createcollection("orders")
+
+    5. Reviews
+    db.createcollection("reviews")
+
+
+5. Write command to show all data from product collections and sort in ascending order.
+A5. db.products.find().sort({ _id: 1 });
+
+6.  Update product price for particular product.
+A6. db.products.updateOne(
+   { _id: ObjectId("product_id_here") },
+   { $set: { price: new_price_here } }
+   );
+
+
+7. Write command to delete particular document and collection.
+A7. To delete a document:
+    db.collection_name.deleteOne({ _id: ObjectId("document_id_here") });
+
+    To delete a collection:
+    db.collection_name.drop();
