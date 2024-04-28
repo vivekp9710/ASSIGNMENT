@@ -1,0 +1,78 @@
+1. What is Express.js?
+A1. Express is a node js web application framework that provides broad features for building web and mobile applications. 
+    It is used to build a single page, multipage, and hybrid web application. 
+    It's a layer built on the top of the Node js that helps manage servers and routes.
+
+2. Create localhost server using express.
+A2. Step1: 
+     // Install Express using npm
+    // npm install express
+   
+    Step2: create file 
+     // const express = require('express');
+     //   const app = express();
+     //   const port = 3000;
+
+    Step3:  Serving static files (HTML, CSS, JS)
+        //app.use(express.static('public'));
+
+          Defining a route for handling client communication
+       //app.get('/api/message', (req, res) => {
+       const message = 'Hello Geek. This Message is From Server';
+       res.json({ message });
+     });
+ 
+    // Starting the server
+     app.listen(port, () => {
+      console.log(`Server is listening at http://localhost:${port}`);
+     });
+
+3. Create basic “Hello world” app using node and express.
+A3. const express = require('express');
+    const app = express();
+ 
+    app.get('/', (req, res) => {
+    res.send('<h1> Hello, World! </h1>');
+    });
+ 
+   app.listen(8000, () => {
+   console.log(`Server is listening at http://localhost:8000`);
+   });
+
+
+4.Create weather app.
+A4.   
+   i. Use Hbs..   
+   //Install handlebars using npm
+  // npm install hbs
+
+  const express = require('express');
+  const hbs = require('hbs');
+  const app = express();
+  const port = 3000;
+
+  // Set up handlebars as the view engine
+  app.set('view engine', 'hbs');
+
+  // Create a views folder in your project directory and add an index.hbs file with your HTML template
+
+   app.get('/', (req, res) => {
+   res.render('index', {
+    title: 'Weather App',
+    message: 'Welcome to the Weather App!'
+    });
+    });
+
+    app.listen(port, () => {
+    console.log(`Server is running at http://localhost:${port}`);
+    });
+
+
+
+  ii. Get country, state, city using api
+  iii. Get weather data by city
+
+
+5. Create a world clock App.
+A5. 
+        
