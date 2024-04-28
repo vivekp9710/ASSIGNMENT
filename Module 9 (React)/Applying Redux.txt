@@ -1,0 +1,26 @@
+1. What is Redux?.
+A1. Redux is an open-source JavaScript library used to manage application state. React uses Redux for building the user interface. 
+    It allows React components to read data from a Redux Store, and dispatch Actions to the Store to update data. 
+    Redux helps apps to scale by providing a sensible way to manage state through a unidirectional data flow model. 
+    Redux is conceptually simple. It subscribes to the Redux store, checks to see if the data which your component wants have changed, 
+    and re-renders your component.
+
+
+2. What is Redux thunk used for?.
+A2. Redux Thunk is a popular middleware for React Redux. You can create services that return a function hence the name Thunk.
+    It allows you to write action creators that returns a function instead of an action.
+
+3. What is Pure Component? when to use Pure component ?
+A3. In React, a pure component is a class component that only renders based on its props and state. 
+    It implements a shouldComponentUpdate() method with a shallow comparison of props and state, preventing 
+    unnecessary re-renders when the data hasn't changed. 
+    This can lead to performance optimizations, especially in larger applications where rendering can become a bottleneck.
+    When props or state changes, PureComponent will do a shallow comparison on both props and state. 
+   Component on the other hand won’t compare current props and state to next out of the box.
+  Thus, the component will re-render by default whenever shouldComponentUpdate is called.
+
+4. What is the second argument that can optionally be passed to `setState`, and what is its purpose?
+A4. The second argument that can optionally be passed to setState is a callback function which gets called immediately after the setState is completed and the components get re-rendered. 
+    If you want your program to update the value of a state using setState and then perform certain actions 
+    on the updated value of the state then you must specify those actions in a function which should be the second argument of the setState.
+     If we do not do so then those actions will be performed on the previous value of state because of the asynchronous nature of setState.
