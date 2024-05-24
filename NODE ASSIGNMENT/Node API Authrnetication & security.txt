@@ -40,6 +40,19 @@ A3. Encryption and hashing are both techniques used in the realm of information 
   Common algorithms include SHA-256, MD5, and bcrypt.
 
 Q4. Create CRUD Application
+  i. Create session management (login & logout)
+  ii. Generate token while registration and login
+  iii. Create logout from one device.
+  iv. Create logout from all device.
+
+    Setup to initiliaze the project
+    bash
+    Copy code
+   mkdir express-jwt-crud
+   cd express-jwt-crud
+   npm init -y
+   npm install express mongoose jsonwebtoken bcryptjs body-parser
+
 A4. i. Create Session Management (Login & Logout)
 
     const express = require('express');
