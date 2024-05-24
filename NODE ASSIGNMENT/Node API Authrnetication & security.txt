@@ -1,0 +1,168 @@
+Q1. What is Middleware in Express.js?
+A1. Middleware in Express.js is a function that executes during the lifecycle of a request to the server. 
+    Each middleware function can perform tasks like executing code, making changes to the request and response objects, 
+    ending the request-response cycle, and calling the next middleware function in the stack.
+    
+    Middleware can be used for a variety of purposes, such as:
+
+1.  Logging
+2.  Authentication and Authorization
+3.  Handling errors
+4.  Parsing request bodies
+
+Q2. What is JSON Web Tokens (JWT)?
+A2. JSON Web Tokens (JWT) are a compact, URL-safe means of representing claims to be transferred between two parties. 
+    The claims in a JWT are encoded as a JSON object that is used as the payload of a JSON Web Signature (JWS) structure
+    or as the plaintext of a JSON Web Encryption (JWE) structure, enabling the claims to be digitally signed or integrity 
+    protected with a Message Authentication Code (MAC) and/or encrypted.
+
+     A JWT is composed of three parts:
+
+1.   Header: Typically consists of two parts - the type of the token (JWT) and the signing algorithm (e.g., HMAC SHA256).
+2.   Payload: Contains the claims, which are statements about an entity (typically, the user) and additional data. There are registered claims, public claims, and private claims.
+3.   Signature: Ensures that the token hasn't been altered. It is created by signing the header and payload with a secret key.
+
+Q3. What is the difference between encryption and hashing?
+A3. Encryption and hashing are both techniques used in the realm of information security, but they serve different purposes and function differently:
+
+   Encryption:
+
+   Converts plaintext into ciphertext using an algorithm and a key.
+   The process is reversible, meaning that the original plaintext can be recovered from the ciphertext using the correct decryption key.
+   Used to protect data during transmission or storage, ensuring confidentiality.
+   Common algorithms include AES, RSA, and DES.
+  
+   Hashing:
+
+  Converts data into a fixed-size hash value (digest) using a hash function.
+  The process is not reversible; you cannot obtain the original data from the hash value.
+  Used for data integrity verification, password storage, and digital signatures.
+  Common algorithms include SHA-256, MD5, and bcrypt.
+
+Q4. Create CRUD Application
+A4. i. Create Session Management (Login & Logout)
+
+    const express = require('express');
+   const session = require('express-session');
+   const app = express();
+
+   app.use(express.json());
+   app.use(session({
+  secret: 'your_secret_key',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false } // should be true in production with HTTPS
+  }));
+
+  // Login
+  app.post('/login', (req, res) => {
+  const { username, password } = req.body;
+  // Authentication logic here
+  if (username === 'user' && password === 'password') {
+    req.session.user = { username };
+    res.status(200).send('Login successful');
+  } else {
+    res.status(401).send('Invalid credentials');
+    }
+  });
+
+  // Logout
+  app.post('/logout', (req, res) => {
+  req.session.destroy(err => {
+    if (err) {
+      return res.status(500).send('Logout failed');
+    }
+    res.status(200).send('Logout successful');
+    });
+  });
+
+  app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+  });
+
+ii. Generate Token While Registration and Login
+    const jwt = require('jsonwebtoken');
+    const secretKey = 'your_secret_key';
+
+   // Registration (simplified example)
+  app.post('/register', (req, res) => {
+  const { username, password } = req.body;
+  // User creation logic here
+  const token = jwt.sign({ username }, secretKey, { expiresIn: '1h' });
+  res.status(201).json({ token });
+  });
+
+  // Login
+  app.post('/login', (req, res) => {
+  const { username, password } = req.body;
+  // Authentication logic here
+  if (username === 'user' && password === 'password') {
+    const token = jwt.sign({ username }, secretKey, { expiresIn: '1h' });
+    res.status(200).json({ token });
+  } else {
+    res.status(401).send('Invalid credentials');
+    }
+  });
+
+
+iii. Create Logout from One Device
+    let tokenBlacklist = [];
+
+    app.post('/logout', (req, res) => {
+    const token = req.headers.authorization.split(' ')[1];
+    tokenBlacklist.push(token);
+    res.status(200).send('Logged out');
+   });
+
+   const checkTokenBlacklist = (req, res, next) => {
+   const token = req.headers.authorization.split(' ')[1];
+   if (tokenBlacklist.includes(token)) {
+    return res.status(401).send('Token is invalidated');
+    }
+    next();
+   };
+
+   // Apply checkTokenBlacklist as middleware to secure routes
+   app.use(checkTokenBlacklist);
+
+iv. Create Logout from All Devices
+    let users = [{ username: 'user', password: 'password', tokenVersion: 0 }];
+
+     app.post('/logout-all', (req, res) => {
+    const { username } = req.body;
+    const user = users.find(u => u.username === username);
+    if (user) {
+    user.tokenVersion += 1;
+    res.status(200).send('Logged out from all devices');
+    } else {
+    res.status(400).send('User not found');
+    }
+   });
+
+   app.post('/login', (req, res) => {
+    const { username, password } = req.body;
+    const user = users.find(u => u.username === username && u.password === password);
+    if (user) {
+    const token = jwt.sign({ username, tokenVersion: user.tokenVersion }, secretKey, { expiresIn: '1h' });
+    res.status(200).json({ token });
+    } else {
+    res.status(401).send('Invalid credentials');
+    }
+   });
+
+   const checkTokenVersion = (req, res, next) => {
+   const token = req.headers.authorization.split(' ')[1];
+   const decoded = jwt.verify(token, secretKey);
+   const user = users.find(u => u.username === decoded.username);
+   if (user && user.tokenVersion === decoded.tokenVersion) {
+     next();
+   } else {
+     res.status(401).send('Token is invalidated');
+     }
+    };
+
+    // Apply checkTokenVersion as middleware to secure routes
+    app.use(checkTokenVersion);
+
+
+
