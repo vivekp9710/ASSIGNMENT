@@ -1,266 +1,226 @@
 Q1. Create REST API for Task Management
 A1. Let's create a REST API for managing tasks. We'll include the basic CRUD operations: GET, POST, DELETE, PUT, and PATCH.
 
-  Project Setup
-  Initialize the Project:
+Steps to Create the API
 
-  bash
-  Copy code
-  mkdir task-manager
-  task-manager
-  npm init -y
-  npm install express mongoose body-parser
-  Create the Project Structure:
+1.Initialize the Project
 
-  markdown
-  Copy code
-  task-manager
-  ├── app.js
-  ├── models
-  │    └── task.js
-  └── routes
-       └── tasks.js
-  app.js
-  javascript
-  Copy code
-  const express = require('express');
-  const mongoose = require('mongoose');
-  const bodyParser = require('body-parser');
-  const taskRoutes = require('./routes/tasks');
+Create a new directory for your project and navigate into it:
 
-  const app = express();
-  
-  mongoose.connect('mongodb://localhost:27017/taskmanager', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  });
+mkdir task-manager-api
+cd task-manager-api
 
-  app.use(bodyParser.json());
-  app.use('/tasks', taskRoutes);
+Initialize a new Node.js project:
 
-  const PORT = process.env.PORT || 3000;
-  app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-  });
-  models/task.js
-  javascript
-  Copy code
-  const mongoose = require('mongoose');
+npm init -y
 
-  const taskSchema = new mongoose.Schema({
-    title: { type: String, required: true },
-    description: { type: String, required: true },
-    completed: { type: Boolean, default: false }
-   });
+2.Install Dependencies
+Install Express and a body parser middleware:
 
-  const Task = mongoose.model('Task', taskSchema);
+npm install express body-parser
 
-  module.exports = Task;
-  routes/tasks.js
-  javascript
-  Copy code
-  const express = require('express');
-  const Task = require('../models/task');
-  const router = express.Router();
+3.Create the Server
 
-  // Get all tasks
-  router.get('/', async (req, res) => {
-  try {
-    const tasks = await Task.find();
-    res.send(tasks);
-  } catch (error) {
-    res.status(500).send(error);
-   }
-  });
+Create an index.js file and set up the Express server:
 
-  // Get a single task
-  router.get('/:id', async (req, res) => {
-    try {
-    const task = await Task.findById(req.params.id);
-    if (!task) return res.status(404).send();
-    res.send(task);
-     } catch (error) {
-      res.status(500).send(error);
-     }
-    });
+const express = require('express');
+const bodyParser = require('body-parser');
 
-    // Create a new task
-     router.post('/', async (req, res) => {
-    const task = new Task(req.body);
-     try {
-      await task.save();
-      res.status(201).send(task);
-    } catch (error) {
-      res.status(400).send(error);
-     }
-   });
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-   // Update a task
-      router.put('/:id', async (req, res) => {
-     try {
-      const task = await Task.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
-      if (!task) return res.status(404).send();
-      res.send(task);
-     } catch (error) {
-      res.status(400).send(error);
-     }
-    });
+app.use(bodyParser.json());
 
-   // Patch a task
-    router.patch('/:id', async (req, res) => {
-     try {
-      const task = await Task.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
-     if (!task) return res.status(404).send();
-     res.send(task);
-     } catch (error) {
-      res.status(400).send(error);
-     }
-   });
+let tasks = [];
+let id = 1;
 
-   // Delete a task
-    router.delete('/:id', async (req, res) => {
-    try {
-     const task = await Task.findByIdAndDelete(req.params.id);
-     if (!task) return res.status(404).send();
-     res.send(task);
-     } catch (error) {
-      res.status(500).send(error);
-     }
-   });
-
-module.exports = router;
-
-Q2. Create REST API for Online Shopping Application
-A2. Now, let's create a REST API for an online shopping application with basic CRUD operations for products.
-
-	Project Setup
-	Initialize the Project:
-
-	bash
-	Copy code
-	mkdir online-shopping
-	cd online-shopping
-	npm init -y
-	npm install express mongoose body-parser
-	Create the Project Structure:
-
-	markdown
-	Copy code
-	online-shopping
-	├── app.js
-	├── models
-	│     └── product.js
-	└── routes
-    	      └── products.js
-	app.js
-	javascript
-	Copy code
-	const express = require('express');
-	const mongoose = require('mongoose');
-	const bodyParser = require('body-parser');
-	const productRoutes = require('./routes/products');
-
-	const app = express();
-
-	mongoose.connect('mongodb://localhost:27017/onlineshopping', {
-  	useNewUrlParser: true,
-  	useUnifiedTopology: true
-	});
-
-	app.use(bodyParser.json());
-	app.use('/products', productRoutes);
-
-	const PORT = process.env.PORT || 3000;
-	app.listen(PORT, () => {
-	  console.log(`Server is running on port ${PORT}`);
-	});
-	models/product.js
-	javascript
-	Copy code
-	const mongoose = require('mongoose');
-
-	const productSchema = new mongoose.Schema({
-  	name: { type: String, required: true },
-  	price: { type: Number, required: true },
-  	description: { type: String, required: true },
- 	 category: { type: String, required: true },
- 	 stock: { type: Number, required: true }
-	});
-
-	const Product = mongoose.model('Product', productSchema);
-
-	module.exports = Product;
-	routes/products.js
-	javascript
-	Copy code
-	const express = require('express');
-	const Product = require('../models/product');
-	const router = express.Router();
-
-	// Get all products
-	router.get('/', async (req, res) => {
- 	 try {
- 	   const products = await Product.find();
-   	 res.send(products);
- 	 } catch (error) {
- 	   res.status(500).send(error);
- 	 }
-	});
-
-	// Get a single product
-	router.get('/:id', async (req, res) => {
-  	try {
-   	 const product = await Product.findById(req.params.id);
-   	 if (!product) return res.status(404).send();
-   	 res.send(product);
-  	} catch (error) {
-   	 res.status(500).send(error);
-  	}
-	});
-
-	// Create a new product
-	router.post('/', async (req, res) => {
-	  const product = new Product(req.body);
-	  try {
- 	   await product.save();
-  	  res.status(201).send(product);
-  	} catch (error) {
- 	   res.status(400).send(error);
- 	 }
-	});
-
-	// Update a product
-	router.put('/:id', async (req, res) => {
-	  try {
-   	 const product = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
-   	 if (!product) return res.status(404).send();
-   	 res.send(product);
-	  } catch (error) {
-  	  res.status(400).send(error);
- 	 }
-	});
-
-	// Patch a product
-	router.patch('/:id', async (req, res) => {
- 	 try {
-  	  const product = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
-   	 if (!product) return res.status(404).send();
-   	 res.send(product);
-  	} catch (error) {
- 	   res.status(400).send(error);
- 	 }
-	});
-
-	// Delete a product
-	router.delete('/:id', async (req, res) => {
-	  try {
-	    const product = await Product.findByIdAndDelete(req.params.id);
- 	   if (!product) return res.status(404).send();
-	    res.send(product);
-	  } catch (error) {
-	    res.status(500).send(error);
-	  }
+// GET /tasks - Retrieve all tasks
+app.get('/tasks', (req, res) => {
+  res.json(tasks);
 });
 
-	module.exports = router;
-	With these setups, you have created two REST APIs: one for task management and another for an online shopping application, both featuring the fundamental CRUD operations (GET, POST, PUT, PATCH, DELETE).
+// POST /tasks - Create a new task
+app.post('/tasks', (req, res) => {
+  const newTask = {
+    id: id++,
+    title: req.body.title,
+    completed: false,
+  };
+  tasks.push(newTask);
+  res.status(201).json(newTask);
+});
+
+// GET /tasks/:id - Retrieve a task by ID
+app.get('/tasks/:id', (req, res) => {
+  const task = tasks.find((t) => t.id === parseInt(req.params.id));
+  if (!task) return res.status(404).send('Task not found');
+  res.json(task);
+});
+
+// PUT /tasks/:id - Update a task by ID
+app.put('/tasks/:id', (req, res) => {
+  const task = tasks.find((t) => t.id === parseInt(req.params.id));
+  if (!task) return res.status(404).send('Task not found');
+
+  task.title = req.body.title;
+  task.completed = req.body.completed;
+  res.json(task);
+});
+
+// PATCH /tasks/:id - Partially update a task by ID
+app.patch('/tasks/:id', (req, res) => {
+  const task = tasks.find((t) => t.id === parseInt(req.params.id));
+  if (!task) return res.status(404).send('Task not found');
+
+  if (req.body.title !== undefined) {
+    task.title = req.body.title;
+  }
+  if (req.body.completed !== undefined) {
+    task.completed = req.body.completed;
+  }
+  res.json(task);
+});
+
+// DELETE /tasks/:id - Delete a task by ID
+app.delete('/tasks/:id', (req, res) => {
+  const taskIndex = tasks.findIndex((t) => t.id === parseInt(req.params.id));
+  if (taskIndex === -1) return res.status(404).send('Task not found');
+
+  tasks.splice(taskIndex, 1);
+  res.status(204).send();
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+
+
+
+
+
+Running the Server
+Run the server using:
+
+node index.js
+The server will be running on http://localhost:3000.
+
+TESTING THE API 
+You can use tool like POSTMAN
+
+
+
+Q2. Create Rest API (get, post, delete, put, patch) for online shopping application.
+A2. A2. Now, let's create a REST API for an online shopping application with basic CRUD operations for products.
+
+Steps to Create the API
+
+1.Initialize the Project
+
+Create a new directory for your project and navigate into it:
+
+mkdir shopping-api
+cd shopping-api
+
+Initialize a new Node.js project:
+npm init -y
+
+2.Install depenedencies
+
+Install Express and a body parser middleware:
+npm install express body-parser
+
+3.Create the Server
+
+Create an index.js file and set up the Express server:
+
+const express = require('express');
+const bodyParser = require('body-parser');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.use(bodyParser.json());
+
+let products = [];
+let productId = 1;
+
+// GET /products - Retrieve all products
+app.get('/products', (req, res) => {
+  res.json(products);
+});
+
+// POST /products - Create a new product
+app.post('/products', (req, res) => {
+  const newProduct = {
+    id: productId++,
+    name: req.body.name,
+    description: req.body.description,
+    price: req.body.price,
+    inStock: req.body.inStock,
+  };
+  products.push(newProduct);
+  res.status(201).json(newProduct);
+});
+
+// GET /products/:id - Retrieve a product by ID
+app.get('/products/:id', (req, res) => {
+  const product = products.find((p) => p.id === parseInt(req.params.id));
+  if (!product) return res.status(404).send('Product not found');
+  res.json(product);
+});
+
+// PUT /products/:id - Update a product by ID
+app.put('/products/:id', (req, res) => {
+  const product = products.find((p) => p.id === parseInt(req.params.id));
+  if (!product) return res.status(404).send('Product not found');
+
+  product.name = req.body.name;
+  product.description = req.body.description;
+  product.price = req.body.price;
+  product.inStock = req.body.inStock;
+  res.json(product);
+});
+
+// PATCH /products/:id - Partially update a product by ID
+app.patch('/products/:id', (req, res) => {
+  const product = products.find((p) => p.id === parseInt(req.params.id));
+  if (!product) return res.status(404).send('Product not found');
+
+  if (req.body.name !== undefined) {
+    product.name = req.body.name;
+  }
+  if (req.body.description !== undefined) {
+    product.description = req.body.description;
+  }
+  if (req.body.price !== undefined) {
+    product.price = req.body.price;
+  }
+  if (req.body.inStock !== undefined) {
+    product.inStock = req.body.inStock;
+  }
+  res.json(product);
+});
+
+// DELETE /products/:id - Delete a product by ID
+app.delete('/products/:id', (req, res) => {
+  const productIndex = products.findIndex((p) => p.id === parseInt(req.params.id));
+  if (productIndex === -1) return res.status(404).send('Product not found');
+
+  products.splice(productIndex, 1);
+  res.status(204).send();
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+
+
+Running the Server
+Run the server using:
+
+node index.js
+The server will be running on http://localhost:3000.
+
+TESTING THE API 
+You can use tool like POSTMAN
+
