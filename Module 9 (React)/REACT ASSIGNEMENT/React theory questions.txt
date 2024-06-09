@@ -1,0 +1,87 @@
+Quest 01:- What is React Js?
+Ans:- 	   React is a framework that employs Webpack to automatically compile React, JSX, and ES6 code while handling CSS file prefixes.
+ 	   React is a JavaScript-based UI development library.
+           Although React is a library rather than a language, it is widely used in web development.
+           The library first appeared in May 2013 and is now one of the most commonly used frontend libraries for web development.
+           React offers various extensions for entire application architectural support, such as Flux and React Native, beyond mere UI.
+
+Quset 02:- What is NPM in React Js?
+Ans:-	   NPM (Node Package Manager) is a package manager for JavaScript.
+          It is the default package manager that comes with NodeJS when you install it.
+           It consists of a command-line interface and an online database of public packages and private packages that are paid which is called the npm Registry.
+
+
+
+Quest 03:-  What is Role of Node Js in react Js?
+Ans:- 	    Node.js is a server-side JavaScript runtime environment. In the context of React.js, Node.js is 
+	    often used for various purposes, such as setting up a development environment, running build 
+	    scripts, and creating server-side rendering (SSR) applications. Node.js provides the tools and 
+	    runtime environment necessary for tasks like running a local development server, compiling and 
+	    bundling React code, and performing other build-related tasks.
+
+
+
+Quest 04:- What is CLI command In React Js?
+Ans:- 	   React has its own command-line interface (CLI) commands. However, 
+           these CLI commands are currently only used to create a passable version of a react application using the command line.
+           This will contain a default template as its design, so all the react application created this way will have great consistency as they all have same structure.
+
+
+
+Quest 05:- What is Components in React Js?
+Ans:-	   Components in React serve as independent and reusable code blocks for UI elements.
+          They represent different parts of a web page and contain both structure and behavior. 
+           They are similar to JavaScript functions and make creating and managing complex user interfaces easier by breaking them down into smaller, reusable pieces.
+
+
+
+Quest 06:- What is Header and Content Components in React Js?
+Ans:- 	   In a React application, Header and Content components are examples of UI components that serve 
+	   specific purposes. The Header component might contain elements such as navigation menus, branding, 
+	   and other information that appears at the top of the page. The Content component could hold the main
+  	   content of the application, including text, images, forms, and other user interface elements.
+
+
+
+Quest 07:- How to install React Js on Windows, Linux Operating System? How to install NPM and How to check 
+	   version of NPM?
+Ans :-	   Install Node.js: React applications rely on Node.js. Download and install Node.js from the official 
+	   website: https://nodejs.org/
+
+	   Install React: Once Node.js is installed, you can install React using the following command in your 
+	   terminal or command prompt:
+	   npm install -g create-react-app
+
+	   Check NPM Version: To check the version of NPM, you can use the following command:
+	   npm -v
+
+
+
+
+
+Quest 08:- How to check version of React Js?
+Ans:- 	   To check the version of React installed in your project, you can run the following command inside 
+	   your project's directory:
+
+	   npm list react
+	   This will display the installed version of React in your project.
+
+
+
+
+Quset 09:- How to change in components of React Js?
+Ans:-	   Identify the Component: Locate the component you want to modify in your project's source code.
+
+	  Make Changes: Open the component file and make the necessary modifications to its logic, rendering, 
+	  or styling.
+
+	  Save Changes: Save the file.
+
+	  Hot Reloading (Development Mode): If you are using create-react-app or a similar development setup, 
+	  the changes you make will automatically be reflected in your application while you are in development 
+	  mode. You don't need to manually refresh the page.
+
+	  Build and Deploy (Production Mode): Once you are satisfied with your changes, you can build the 
+	  application and deploy it to a production environment. This typically involves running build scripts 
+	  provided by your React CLI tool
+
