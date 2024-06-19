@@ -1,0 +1,186 @@
+Step 1
+
+Setup
+1.Create a React Project
+
+bash
+npx create-react-app admin-user-app
+cd admin-user-app
+
+Necessary depenedencies
+npm install react-router-dom
+
+2. Create the Project Strcuture
+mkdir -p src/modules/Admin src/modules/User src/components
+
+3.Create the componenets and Routes
+Create the Admin module components:
+
+AdminDashboard.js
+import React from 'react';
+
+const AdminDashboard = () => {
+    return (
+        <div>
+            <h2>Admin Dashboard</h2>
+            <p>Welcome to the Admin Dashboard!</p>
+        </div>
+    );
+};
+
+export default AdminDashboard;
+
+AdminSettings.js
+import React from 'react';
+
+const AdminSettings = () => {
+    return (
+        <div>
+            <h2>Admin Settings</h2>
+            <p>Manage your settings here.</p>
+        </div>
+    );
+};
+
+export default AdminSettings;
+
+Create the User module components:
+
+UserDashboard.js
+
+import React from 'react';
+
+const UserDashboard = () => {
+    return (
+        <div>
+            <h2>User Dashboard</h2>
+            <p>Welcome to the User Dashboard!</p>
+        </div>
+    );
+};
+
+export default UserDashboard;
+
+UserProfile.js
+
+import React from 'react';
+
+const UserProfile = () => {
+    return (
+        <div>
+            <h2>User Profile</h2>
+            <p>Manage your profile here.</p>
+        </div>
+    );
+};
+
+export default UserProfile;
+
+Create the main App component with lazy loading:
+
+App.js
+
+import React, { Suspense, lazy } from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+
+const AdminDashboard = lazy(() => import('./modules/Admin/AdminDashboard'));
+const AdminSettings = lazy(() => import('./modules/Admin/AdminSettings'));
+const UserDashboard = lazy(() => import('./modules/User/UserDashboard'));
+const UserProfile = lazy(() => import('./modules/User/UserProfile'));
+
+const App = () => {
+    return (
+        <Router>
+            <div>
+                <nav>
+                    <ul>
+                        <li><Link to="/admin/dashboard">Admin Dashboard</Link></li>
+                        <li><Link to="/admin/settings">Admin Settings</Link></li>
+                        <li><Link to="/user/dashboard">User Dashboard</Link></li>
+                        <li><Link to="/user/profile">User Profile</Link></li>
+                    </ul>
+                </nav>
+                <Suspense fallback={<div>Loading...</div>}>
+                    <Routes>
+                        <Route path="/admin/*" element={<AdminRoutes />} />
+                        <Route path="/user/*" element={<UserRoutes />} />
+                    </Routes>
+                </Suspense>
+            </div>
+        </Router>
+    );
+};
+
+const AdminRoutes = () => {
+    return (
+        <Routes>
+            <Route path="dashboard" element={<AdminDashboard />} />
+            <Route path="settings" element={<AdminSettings />} />
+        </Routes>
+    );
+};
+
+const UserRoutes = () => {
+    return (
+        <Routes>
+            <Route path="dashboard" element={<UserDashboard />} />
+            <Route path="profile" element={<UserProfile />} />
+        </Routes>
+    );
+};
+
+export default App;
+
+Create a basic CSS file to style the navigation:
+
+App.css
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+div {
+    padding: 20px;
+}
+
+
+Update the entry point file to include the CSS:
+
+index.js
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+
+ReactDOM.render(
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>,
+    document.getElementById('root')
+);
+
+Run the Application
+npm start
+
+
+
+
+
+
