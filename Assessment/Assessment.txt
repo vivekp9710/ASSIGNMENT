@@ -1,0 +1,249 @@
+Step 1. Set Up the Project
+
+1. Initialize the Project
+
+mkdir blogging-platform
+cd blogging-platform
+npm init -y
+
+2.install necessary packages
+
+npm install express hbs
+
+Step 2. Create the server
+
+1. create the main server file
+app.js
+const express = require('express');
+const path = require('path');
+const hbs = require('hbs');
+
+const app = express();
+const port = process.env.PORT || 3000;
+
+// Set up Handlebars engine and views location
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'views'));
+hbs.registerPartials(path.join(__dirname, 'views/partials'));
+
+// Set up static directory to serve
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Define routes
+app.get('/', (req, res) => {
+  res.render('index', {
+    title: 'Home',
+    name: 'Blogging Platform'
+  });
+});
+
+app.get('/about', (req, res) => {
+  res.render('about', {
+    title: 'About Us',
+    name: 'Blogging Platform'
+  });
+});
+
+app.get('/contact', (req, res) => {
+  res.render('contact', {
+    title: 'Contact Us',
+    name: 'Blogging Platform'
+  });
+});
+
+// Start the server
+app.listen(port, () => {
+  console.log(`Server is up on port ${port}`);
+});
+
+
+
+Step 3. create views and partials
+1. Create views and directories
+Inside your project directory, create a views folder and inside it, create partials and the main view files.
+
+2.Create the main view files:
+Inside the views folder, create the following files:
+
+index.hbs
+about.hbs
+contact.hbs
+partials/header.hbs
+partials/footer.hbs
+
+3.Add content to the view files
+views/indes.hbs
+html
+{{> header }}
+<h1>{{title}}</h1>
+<p>Welcome to the home page of our blogging platform!</p>
+{{> footer }}
+
+views/about.hbs
+html
+{{> header }}
+<h1>{{title}}</h1>
+<p>Learn more about this</p>
+{{> footer }}
+
+views/contact.hbs
+html
+{{> header }}
+<h1>{{title}}</h1>
+<p>Get in touch.</p>
+{{> footer }}
+
+views/partials/header.hbs
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+views/partials/footer.hbs
+html
+  <footer>
+    <p>&copy; 2024 Blogging Platform</p>
+  </footer>
+</body>
+</html>
+
+Step 4.Add custom CSS
+1.Create CSS file
+Inside your project directory, create a public folder and within it, create a css folder and a styles.css file.
+
+2.Add basic styling
+public/css/styling.css
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 10px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+h1 {
+  color: #333;
+}
+
+p {
+  color: #666;
+}
+
+Step 5. Load Data
+1.Modify app.js to add data
+
+const express = require('express');
+const path = require('path');
+const hbs = require('hbs');
+
+const app = express();
+const port = process.env.PORT || 3000;
+
+// Dummy data
+const blogPosts = [
+  { title: 'First Post', content: 'This is the content of the first post.' },
+  { title: 'Second Post', content: 'This is the content of the second post.' }
+];
+
+// Set up Handlebars engine and views location
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'views'));
+hbs.registerPartials(path.join(__dirname, 'views/partials'));
+
+// Set up static directory to serve
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Define routes
+app.get('/', (req, res) => {
+  res.render('index', {
+    title: 'Home',
+    name: 'Blogging Platform',
+    posts: blogPosts
+  });
+});
+
+app.get('/about', (req, res) => {
+  res.render('about', {
+    title: 'About Us',
+    name: 'Blogging Platform'
+  });
+});
+
+app.get('/contact', (req, res) => {
+  res.render('contact', {
+    title: 'Contact Us',
+    name: 'Blogging Platform'
+  });
+});
+
+// Start the server
+app.listen(port, () => {
+  console.log(`Server is up on port ${port}`);
+});
+
+2.Update index.hbs
+html
+{{> header }}
+<h1>{{title}}</h1>
+<p>Welcome to the home page of our blogging platform!</p>
+<div>
+  {{#each posts}}
+    <article>
+      <h2>{{this.title}}</h2>
+      <p>{{this.content}}</p>
+    </article>
+  {{/each}}
+</div>
+{{> footer }}
+
+Step 6.Run the server
+
+node app.js
+
