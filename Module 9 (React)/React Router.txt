@@ -1,3 +1,7 @@
+Create React App with modules and lazy loading (Admin-user module with child Router 
+and Outlet)
+
+
 Step 1
 
 Setup
